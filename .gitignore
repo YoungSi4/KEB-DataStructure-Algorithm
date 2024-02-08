@@ -9,8 +9,7 @@
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/
-
-
+Non-git/
 
 # AWS User-specific
 .idea/**/aws.xml
