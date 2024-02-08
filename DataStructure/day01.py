@@ -39,40 +39,42 @@
 
 
 """
-2차 다항식 계산하기
+2차 다항식 계산하기 - 다양한 지수에 대응
 """
 
-def print_Poly(f_x) -> str : #언더스코어 표기법
-    term = len(f_x) - 1
+def print_Poly(t_x, f_x) -> str : #언더스코어 표기법
     poly_expression = "F(x) = "
 
     for i in range(len(fx)):
+        term = t_x[i]
         coefficient = f_x[i]  # 계수
 
-        if coefficient >= 0:
+        if coefficient == 0:
+            continue
+        if coefficient > 0 and i != 0:
             poly_expression += "+"
+
         poly_expression += f'{coefficient}x^{term} '
-        term -= 1
 
     return poly_expression
 
 
-def calculation_Poly(x_Value, f_x):
+def calculation_Poly(x_Value, t_x, f_x):
     return_Value = 0
-    term = len(f_x) - 1  # 최고차항 숫자 = 배열길이-1
 
     for i in range(len(fx)):
         coefficient = f_x[i]  # 계수
-        return_Value += coefficient * pow(x_Value, term)
-        term -= 1
+        return_Value += coefficient * pow(x_Value, t_x[i])
 
     return return_Value
 
 
 ## 전역 변수 선언 부분 ##
-fx = [7, -4, 0, 5]  # = 7x^3 -4x^2 +0x^1 +5x^0
+tx = [300, 20, 0]
+fx = [7, -4, 5]  # = 7x^3 -4x^2 +0x^1 +5x^0
 
 ## 메인 코드 부분 ##
 if __name__ == "__main__":
-    print(print_Poly(fx))
-    print(calculation_Poly(int(input("input x -> ")), fx))
+    print(print_Poly(tx, fx))
+    print(calculation_Poly(int(input("input x -> ")), tx, fx))
+
