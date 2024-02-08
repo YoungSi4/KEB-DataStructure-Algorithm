@@ -1,3 +1,14 @@
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args)
+        end = time.time()
+        print(f"time elapsed: {end - start}")
+        return result
+    return wrapper
+
 def factorial(number) -> int:
     """
     fac by repetition
@@ -5,11 +16,11 @@ def factorial(number) -> int:
     :return: int result
     """
     result = 1
-    while(number > 1):
-        result = result * number
-        number -= 1
-    # for i in range(number):
-    #     result = result * i
+    # while(number > 1):
+    #     result = result * number
+    #     number -= 1
+    for i in range(number):
+        result = result * (i+1)
     return result
 
 def factorial_recursion(number) -> int:
@@ -22,7 +33,7 @@ def factorial_recursion(number) -> int:
         return 1
     else:
         return number * factorial_recursion(number - 1)
-
+@timer
 def Combination(n, r) -> int:
     """
     nCr 조합의 경우의 수를 반환하는 함수
@@ -30,6 +41,7 @@ def Combination(n, r) -> int:
     :param r: 선택한 수
     :return: int
     """
-    numerator = factorial_recursion(n)
-    denominator = factorial_recursion(n-r) * factorial_recursion(r)
+
+    numerator = factorial(n)
+    denominator = factorial(n-r) * factorial(r)
     return int(numerator / denominator)
