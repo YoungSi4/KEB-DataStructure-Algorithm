@@ -1,11 +1,28 @@
-def factorial(number) -> int:
-    result = 1
-    while(number > 1):
-        result = result * number
-        number -= 1
-    # for i in range(number):
-    #     result = result * i
-    return result
+# def factorial(number) -> int:
+#     """
+#     fac by repetition
+#     :param number: int number to repeat
+#     :return: int result
+#     """
+#     result = 1
+#     while(number > 1):
+#         result = result * number
+#         number -= 1
+#     # for i in range(number):
+#     #     result = result * i
+#     return result
+
+def factorial_recursion(number) -> int:
+    """
+    fac by recursion
+    :param number: number
+    :return: int result
+    """
+    if number == 1:
+        return 1
+    else:
+        return number * factorial_recursion(number - 1)
+
 
 def Combination(n, r) -> int:
     """
@@ -14,8 +31,8 @@ def Combination(n, r) -> int:
     :param r: 선택한 수
     :return: int
     """
-    numerator = factorial(n)
-    denominator = factorial(n-r) * factorial(r)
+    numerator = factorial_recursion(n)
+    denominator = factorial_recursion(n-r) * factorial_recursion(r)
     return int(numerator / denominator)
 
 if __name__ == "__main__":
