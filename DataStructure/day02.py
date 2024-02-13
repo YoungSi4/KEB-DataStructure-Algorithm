@@ -61,100 +61,251 @@
 # 	print_Nodes(head)
 
 
-# 4-7 참고해서 원형 연결 리스트 삭제 기능 만들기
-# 머리가 안 돌아가
+# # 4-7 참고해서 원형 연결 리스트 삭제 기능 만들기
+# # 머리가 안 돌아가
+#
+# class Node:
+#     def __init__(self):
+#         self.data = None
+#         self.link = None
+#
+# def insert_node():
+#     pass
+#
+# def delete_node():
+#     pass
+#
+# def find_node():
+#     pass
+#
+# def print_node(start_point):
+#     current = start_point
+#     if current.link == head:
+#         return
+#
+# current, last, head = 0, 0, 0
+# data_Array = [] # 임시
+#
+# if __name__ == "__main__": # 원형 리스트 생성.
+#     node = Node()
+#     node.data = data_Array[0]
+#     head = node
+#     node.link = head
+#
+#     for data in data_Array[1:]:
+#         pre = node
+#         node = Node()
+#         node.data = data
+#         pre.link = node
+#         node.link = head
 
-# 원형 연결 리스트 응용 5 - 8 혼자 해결하기 문제
-import random
+# # 원형 연결 리스트 응용 5 - 8 혼자 해결하기 문제
+# import random
+#
+# class Node() :
+# 	def __init__ (self) :
+# 		self.data = None
+# 		self.link = None
+#
+# def print_Nodes(start):
+# 	current = start
+# 	if current.link is head:
+# 		return
+# 	print(current.data, end=' ')
+# 	while current.link != start:
+# 		current = current.link
+# 		print(current.data, end=' ')
+# 	print()
+#
+# def delete_Node(delete_Data) :
+# 	global head, current, pre
+#
+# 	if head.data == delete_Data :		# 첫 번째 노드 삭제
+# 		current = head
+# 		head = head.link
+# 		last = head
+# 		while last.link != current:		# 마지막 노드를 찾으면 반복 종료
+# 			last = last.link		# last를 다음 노드로 변경
+# 		last.link = head			# 마지막 노드의 링크에 head가 가리키는 노드 지정
+# 		del(current)
+# 		return
+#
+# 	current = head	                        	# 첫 번째 외 노드 삭제
+# 	while current.link != head :    # None이 없기 때문에 head가 기준
+# 		pre = current
+# 		current = current.link
+# 		if current.data == delete_Data :  	# 중간 노드를 찾았을 때
+# 			pre.link = current.link
+# 			del(current)
+# 			return
+#
+# def process_toggle(datas):
+# 	plus_count, minus_count, zero_count = 0, 0, 0
+# 	# odd_count, even_count, reminder = 0, 0, 0
+#
+# 	for data in datas:
+# 		if data > 0:
+# 			plus_count += 1
+# 		else:
+# 			minus_count += 1
+# 	print(f'양수-->{plus_count}  음수-->{minus_count}  0-->{zero_count}')
+#
+# 	# 이전 문제 코드
+# 	# if even_count > odd_count:
+# 	# 	reminder = 0
+# 	# else:
+# 	# 	reminder = 1
+# 	#
+# 	# current = head
+# 	# while True:
+# 	# 	if current.data % 2 == reminder:
+# 	# 		current.data *= -1
+# 	# 	if current.link == head:
+# 	# 		break
+# 	# 	current = current.link
+#
+# 	current = head
+# 	while True:
+# 		current.data = current.data * -1
+# 		if current.link == head:
+# 			break
+# 		current = current.link
+#
+# ## 전역 변수 선언 부분 ##
+# head, current, last = None, None, None
+# data_Array = [random.randint(-100, 100) for number in range(7)]
+#
+# ## 메인 코드 부분 ##
+# if __name__ == "__main__" :
+#     node = Node()		# 첫 번째 노드
+#     node.data = data_Array[0]
+#     head = node
+#     node.link = head
+#
+#
+#     for data in data_Array[1:] :	# 두 번째 이후 노드
+#         pre = node
+#         node = Node()
+#         node.data = data
+#         pre.link = node
+#         node.link = head
+#
+#     print_Nodes(head)
+#     process_toggle(data_Array)
+#     print_Nodes(head)
 
-class Node() :
-	def __init__ (self) :
-		self.data = None
-		self.link = None
 
-def print_Nodes(start):
-	current = start
-	if current.link is head:
+
+# # 스택
+#
+# def is_StackFull():
+# 	global SIZE, stack, top
+# 	if (top >= SIZE-1):
+# 		return True
+# 	else :
+# 		return False
+#
+# def push(data) :
+# 	global SIZE, stack, top
+# 	# if is_StackFull():
+# 	if top >= SIZE - 1:
+# 		print("스택이 꽉 찼습니다.")
+# 		return
+# 	top += 1
+# 	stack[top] = data
+#
+# def pop():
+# 	if top == -1:
+# 		print("스택이 비었습니다")
+# 		return None
+# 	data = stack[top]
+# 	stack[top] = None
+# 	top -= 1
+# 	return data
+#
+# def peek(data):
+#     if top == -1:
+#         print("스택이 비었습니다")
+#         return None
+#     return stack[top]
+#
+# SIZE = 5
+# stack = ["커피", "녹차", "꿀물", "콜라", None]
+# top = 3
+#
+# print(stack)
+# push("환타")
+# print(stack)
+# push("게토레이")
+
+
+# 스택 응용 - 괄호 짝 맞추기
+
+## 함수 선언 부분 ##
+def is_Stack_Full():
+	global size, stack, top
+	if top >= size-1:
+		return True
+	else :
+		return False
+
+def is_Stack_Empty():
+	global size, stack, top
+	return size[top]
+
+def push(data) :
+	global size, stack, top
+	if is_Stack_Full():
+		print("스택이 꽉 찼습니다.")
 		return
-	print(current.data, end=' ')
-	while current.link != start:
-		current = current.link
-		print(current.data, end=' ')
-	print()
+	top += 1
+	stack[top] = data
 
-def delete_Node(delete_Data) :
-	global head, current, pre
+def pop() :
+	global size, stack, top
+	if is_Stack_Empty():
+		print("스택이 비었습니다.")
+		return None
+	data = stack[top]
+	stack[top] = None
+	top -= 1
+	return data
 
-	if head.data == delete_Data :		# 첫 번째 노드 삭제
-		current = head
-		head = head.link
-		last = head
-		while last.link != current:		# 마지막 노드를 찾으면 반복 종료
-			last = last.link		# last를 다음 노드로 변경
-		last.link = head			# 마지막 노드의 링크에 head가 가리키는 노드 지정
-		del(current)
-		return
+def peek() :
+	global size, stack, top
+	if is_Stack_Empty():
+		print("스택이 비었습니다.")
+		return None
+	return stack[top]
 
-	current = head	                        	# 첫 번째 외 노드 삭제
-	while current.link != head :    # None이 없기 때문에 head가 기준
-		pre = current
-		current = current.link
-		if current.data == delete_Data :  	# 중간 노드를 찾았을 때
-			pre.link = current.link
-			del(current)
-			return
+def check_Bracket(expr: str) -> bool:
+	"""
+	check bracket pair in expression
+	:param expr: str
+	:return: bool
+	"""
+	table = {')': '(', '}': '{', ']': '[', '>': '<'} # dict 자료형으로 키 밸류로 매칭
 
-def process_toggle(datas):
-	plus_count, minus_count, zero_count = 0, 0, 0
-	# odd_count, even_count, reminder = 0, 0, 0
-
-	for data in datas:
-		if data > 0:
-			plus_count += 1
+	for charictor in expr:
+		if charictor not in table: # 근데 조건문이 이러면 괄호만 넣어야 함
+			# push(charictor)
+			stack.append(charictor) # 사실 이걸로 이미 push를 할 수 있다.
+		elif not stack or table[charictor] != pop():
+			return False
 		else:
-			minus_count += 1
-	print(f'양수-->{plus_count}  음수-->{minus_count}  0-->{zero_count}')
-
-	# 이전 문제 코드
-	# if even_count > odd_count:
-	# 	reminder = 0
-	# else:
-	# 	reminder = 1
-	#
-	# current = head
-	# while True:
-	# 	if current.data % 2 == reminder:
-	# 		current.data *= -1
-	# 	if current.link == head:
-	# 		break
-	# 	current = current.link
-
-	current = head
-	while True:
-		current.data = current.data * -1
-		if current.link == head:
-			break
-		current = current.link
+			pass
+	return len(stack) == 0 # 스택의 길이가 0이면 True
 
 ## 전역 변수 선언 부분 ##
-head, current, last = None, None, None
-data_Array = [random.randint(-100, 100) for number in range(7)]
+size = 20
+stack = [None for _ in range(size)]
+top = -1
 
 ## 메인 코드 부분 ##
 if __name__ == "__main__" :
-    node = Node()		# 첫 번째 노드
-    node.data = data_Array[0]
-    head = node
-    node.link = head
+	expression = input("input expression")
 
+	for expr in expression :
+		top = -1
+		print(expr, '==>', check_Bracket(expr))
 
-    for data in data_Array[1:] :	# 두 번째 이후 노드
-        pre = node
-        node = Node()
-        node.data = data
-        pre.link = node
-        node.link = head
-
-    print_Nodes(head)
-    process_toggle(data_Array)
-    print_Nodes(head)
