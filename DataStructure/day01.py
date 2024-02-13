@@ -2,13 +2,13 @@
 조합 구하기
 """
 
-# import Probability
+# import mmaaatthh
 # import time
 #
 # if __name__ == "__main__":
 #     n = int(input("Input n : "))
 #     r = int(input("Input r : "))
-#     print(f"{n} Combination {r} is {Probability.Combination(n, r)}")
+#     print(f"{n} Combination {r} is {mmaatthh.Combination(n, r)}")
 
 """
 업다운 숫자 맞추기 게임 : O(log N)
