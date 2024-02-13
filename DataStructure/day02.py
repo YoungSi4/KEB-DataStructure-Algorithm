@@ -239,73 +239,76 @@
 # push("게토레이")
 
 
-# 스택 응용 - 괄호 짝 맞추기
+# # 스택 응용 - 괄호 짝 맞추기
+#
+# ## 함수 선언 부분 ##
+# def is_Stack_Full():
+# 	global size, stack, top
+# 	if top >= size-1:
+# 		return True
+# 	else :
+# 		return False
+#
+# def is_Stack_Empty():
+# 	global size, stack, top
+# 	return size[top]
+#
+# def push(data) :
+# 	global size, stack, top
+# 	if is_Stack_Full():
+# 		print("스택이 꽉 찼습니다.")
+# 		return
+# 	top += 1
+# 	stack[top] = data
+#
+# def pop() :
+# 	global size, stack, top
+# 	if is_Stack_Empty():
+# 		print("스택이 비었습니다.")
+# 		return None
+# 	data = stack[top]
+# 	stack[top] = None
+# 	top -= 1
+# 	return data
+#
+# def peek() :
+# 	global size, stack, top
+# 	if is_Stack_Empty():
+# 		print("스택이 비었습니다.")
+# 		return None
+# 	return stack[top]
+#
+# def check_Bracket(expr: str) -> bool:
+# 	"""
+# 	check bracket pair in expression
+# 	:param expr: str
+# 	:return: bool
+# 	"""
+# 	table = {')': '(', '}': '{', ']': '[', '>': '<'} # dict 자료형으로 키 밸류로 매칭
+#
+# 	for charictor in expr:
+# 		if charictor not in table: # 근데 조건문이 이러면 괄호만 넣어야 함
+# 			# push(charictor)        # 문자가 섞여 들어가는 이슈가 있음. 잘 해결해보셈
+# 			stack.append(charictor) # 사실 이걸로 이미 push를 할 수 있다.
+# 		elif not stack or table[charictor] != pop():
+# 			return False
+# 		else:
+# 			pass
+# 	return len(stack) == 0 # 스택의 길이가 0이면 True
+#
+# ## 전역 변수 선언 부분 ##
+# size = 20
+# stack = [None for _ in range(size)]
+# top = -1
+#
+# ## 메인 코드 부분 ##
+# if __name__ == "__main__" :
+# 	expression = input("input expression")
+#
+# 	for expr in expression :
+# 		top = -1
+# 		print(expr, '==>', check_Bracket(expr))
 
-## 함수 선언 부분 ##
-def is_Stack_Full():
-	global size, stack, top
-	if top >= size-1:
-		return True
-	else :
-		return False
 
-def is_Stack_Empty():
-	global size, stack, top
-	return size[top]
 
-def push(data) :
-	global size, stack, top
-	if is_Stack_Full():
-		print("스택이 꽉 찼습니다.")
-		return
-	top += 1
-	stack[top] = data
-
-def pop() :
-	global size, stack, top
-	if is_Stack_Empty():
-		print("스택이 비었습니다.")
-		return None
-	data = stack[top]
-	stack[top] = None
-	top -= 1
-	return data
-
-def peek() :
-	global size, stack, top
-	if is_Stack_Empty():
-		print("스택이 비었습니다.")
-		return None
-	return stack[top]
-
-def check_Bracket(expr: str) -> bool:
-	"""
-	check bracket pair in expression
-	:param expr: str
-	:return: bool
-	"""
-	table = {')': '(', '}': '{', ']': '[', '>': '<'} # dict 자료형으로 키 밸류로 매칭
-
-	for charictor in expr:
-		if charictor not in table: # 근데 조건문이 이러면 괄호만 넣어야 함
-			# push(charictor)
-			stack.append(charictor) # 사실 이걸로 이미 push를 할 수 있다.
-		elif not stack or table[charictor] != pop():
-			return False
-		else:
-			pass
-	return len(stack) == 0 # 스택의 길이가 0이면 True
-
-## 전역 변수 선언 부분 ##
-size = 20
-stack = [None for _ in range(size)]
-top = -1
-
-## 메인 코드 부분 ##
-if __name__ == "__main__" :
-	expression = input("input expression")
-
-	for expr in expression :
-		top = -1
-		print(expr, '==>', check_Bracket(expr))
-
+# 
