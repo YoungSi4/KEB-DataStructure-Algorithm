@@ -9,4 +9,14 @@ class Node():
         self.data = None
         self.link = None
 
+## 함수 선언 & 정의부
+def linked_list_generator():
+    for data in [random.randint(1,100) for num in range(5)]:
+
+
+
+
+
+## 전역변수
+current, pre, head = None, None, None
 
