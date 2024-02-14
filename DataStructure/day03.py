@@ -210,16 +210,76 @@
 #
 # ## 코드가 오류로 꼬여서 뭐 어케된 건지 모르겠다
 
-def decimal_to_octal(number: int) -> str: ## 출력 용이를 위함
-    """
-    decimal to octal func
-    :param number: integer (base dec)
-    :return: string (base octal)
-    """
-    if number < 8:
-        return str(number)
-    else:
-        return decimal_to_octal(number//8) + str(number%8)
 
-n = int(input("decimal: "))
-print(decimal_to_octal(n))
+
+## 재귀 함수 - 코드가 짧아지고 수학적인 가독성이 좋아진다.
+## 반복문으로 구현할 수 있다. 오버헤드가 적지만 경우에 따라 코드가 복잡해진다.
+#
+# def decimal_to_octal(number: int) -> str: ## 출력 용이를 위함
+#     """
+#     decimal to octal func
+#     :param number: integer (base dec)
+#     :return: string (base octal)
+#     """
+#     if number < 8:
+#         return str(number)
+#     else:
+#         return decimal_to_octal(number//8) + str(number%8) # 몫을 전달, 나머지 구해오기 + 나머지
+#
+# n = int(input("decimal: "))
+# print(decimal_to_octal(n))
+
+
+
+## 피보나치 수열 - 재귀함수
+
+# def fibonachi_recursion(number: int) -> int :
+#     """
+#     피보나치 수를 반환하는 함수
+#     :param number: integer number
+#     :return: integer number
+#     """
+#     if number == 0 :
+#         return 0
+#     elif number == 1 :
+#         return 1
+#     else :
+#         return fibonachi_recursion(number - 1) + fibonachi_recursion(number - 2)
+#
+# n = int(input("Input integer number: ")) ## 나오긴 하는데 점점 느려진다.
+#
+# for i in range(0, n) :
+#     print(fibonachi_recursion(i), end=' ')
+
+## 반복문으로 재구성. 겁나게 빠르다.
+def fibonachi_loop(n: int)-> int:
+    """
+    반복문을 이용하여 피보나치 수를 구하는 함수 (단 2 이상의 값만 입력받는다)
+    :param n: integer (2 <= n)
+    :return: integer
+    """
+    sum_fibo, reminder1, reminder2 = 0, 0, 1
+    for i in range(n-1):
+        sum_fibo = reminder1 + reminder2
+        print(f'{i+2}번')
+        print(sum_fibo)
+        reminder1 = reminder2
+        reminder2 = sum_fibo
+
+## 교수님 코드
+
+def fibo_repetition_prof(number):
+    a = 0
+    b = 1
+    for _ in range(number):
+        a, b = b, a + b
+    return a
+
+if __name__ == "__main__":
+    num = int(input("how much fibo? : "))
+    print("0"); print("0")
+    print("1"); print("1")
+    fibonachi_loop(num)
+    print()
+    print("----------")
+    print(fibo_repetition_prof(num))
