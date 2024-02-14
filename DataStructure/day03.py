@@ -75,13 +75,15 @@ def dfs(g, i, visited):
         if g[i][j] == 1 and not visited[j]:
             dfs(g, j, visited)
 
+
 graph = [
-    [0, 0, 1, 1, 0],
-    [0, 0, 1, 0, 0],
-    [1, 1, 0, 1, 1],
-    [1, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
+    [0, 1, 1, 0, 0, 0],
+    [1, 0, 0, 1, 0, 0],
+    [1, 0, 0, 1, 0, 0],
+    [0, 1, 1, 0, 1, 1],
+    [0, 0, 0, 1, 0, 1],
+    [0, 0, 0, 1, 1, 0]
 ]
 
-visited = [False] * len(graph)
+visited = [0] * len(graph) # list comprehension 으로 바꿔도 됨
 dfs(graph, 0, visited)
