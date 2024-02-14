@@ -10,8 +10,12 @@ class Node():
         self.link = None
 
 ## 함수 선언 & 정의부
-def linked_list_generator():
-    for data in [random.randint(1,100) for num in range(5)]:
+def linked_list_generator(size):
+
+
+
+## 전역변수 선언부
+number_Array = [random.randint(1,100) for num in range(5)]
 
 
 
