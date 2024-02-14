@@ -210,3 +210,16 @@
 #
 # ## 코드가 오류로 꼬여서 뭐 어케된 건지 모르겠다
 
+def decimal_to_octal(number: int) -> str: ## 출력 용이를 위함
+    """
+    decimal to octal func
+    :param number: integer (base dec)
+    :return: string (base octal)
+    """
+    if number < 8:
+        return str(number)
+    else:
+        return decimal_to_octal(number//8) + str(number%8)
+
+n = int(input("decimal: "))
+print(decimal_to_octal(n))
