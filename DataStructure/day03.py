@@ -233,40 +233,40 @@
 
 ## 피보나치 수열 - 재귀함수
 
-# def fibonachi_recursion(number: int) -> int :
-#     """
-#     피보나치 수를 반환하는 함수
-#     :param number: integer number
-#     :return: integer number
-#     """
-#     if number == 0 :
-#         return 0
-#     elif number == 1 :
-#         return 1
-#     else :
-#         return fibonachi_recursion(number - 1) + fibonachi_recursion(number - 2)
-#
+def fibonachi_recursion(number: int) -> int :
+    """
+    피보나치 수를 반환하는 함수
+    :param number: integer number
+    :return: integer number
+    """
+    if number == 0 :
+        return 0
+    elif number == 1 :
+        return 1
+    else :
+        return fibonachi_recursion(number - 1) + fibonachi_recursion(number - 2)
+
 # n = int(input("Input integer number: ")) ## 나오긴 하는데 점점 느려진다.
 #
 # for i in range(0, n) :
 #     print(fibonachi_recursion(i), end=' ')
 
 ## 반복문으로 재구성. 겁나게 빠르다.
-def fibonachi_loop(n: int)-> int:
-    """
-    반복문을 이용하여 피보나치 수를 구하는 함수 (단 2 이상의 값만 입력받는다)
-    :param n: integer (2 <= n)
-    :return: integer
-    """
-    sum_fibo, reminder1, reminder2 = 0, 0, 1
-    for i in range(n-1):
-        sum_fibo = reminder1 + reminder2
-        print(f'{i+2}번')
-        print(sum_fibo)
-        reminder1 = reminder2
-        reminder2 = sum_fibo
-
-## 교수님 코드
+# def fibonachi_loop(n: int)-> int:
+#     """
+#     반복문을 이용하여 피보나치 수를 구하는 함수 (단 2 이상의 값만 입력받는다)
+#     :param n: integer (2 <= n)
+#     :return: integer
+#     """
+#     sum_fibo, reminder1, reminder2 = 0, 0, 1
+#     for i in range(n-1):
+#         sum_fibo = reminder1 + reminder2
+#         print(f'{i+2}번')
+#         print(sum_fibo)
+#         reminder1 = reminder2
+#         reminder2 = sum_fibo
+#
+# # 교수님 코드 - 변수가 하나 줄었다. 패킹 언패킹으로 매우 짧게 줄였다.
 
 def fibo_repetition_prof(number):
     a = 0
@@ -275,11 +275,49 @@ def fibo_repetition_prof(number):
         a, b = b, a + b
     return a
 
-if __name__ == "__main__":
-    num = int(input("how much fibo? : "))
-    print("0"); print("0")
-    print("1"); print("1")
-    fibonachi_loop(num)
-    print()
-    print("----------")
-    print(fibo_repetition_prof(num))
+
+
+# 피보나치 수열 - 메모이제이션 추가: 압도적으로 일반 재귀보다 빠르다.
+
+memo = [None for _ in range(100)] # 계산결과를 빠르게 정적할당
+
+def fibonachi_memoization(number: int, memo: list) -> int :
+    """
+    피보나치 수를 반환하는 함수
+    :param number: integer number
+    :return: integer number
+    """
+    if memo[number] is not None: # 이미 계산한 내용이면 바로 리턴하자.
+        return memo[number]
+    if number < 2:
+        result = number
+    else:
+        result = fibonachi_memoization(number - 1, memo) + fibonachi_memoization(number - 2, memo)
+        memo[number] = result
+    return result
+
+# for i in range(0, n) :
+#     print(fibonachi_memoization(i), end=' ')
+
+## 메인함수 선언부
+# if __name__ == "__main__":
+n = int(input("how much fibo? : "))
+    # print("0"); print("0")
+    # print("1"); print("1")
+    # fibonachi_loop(num)
+    # print()
+    # print("----------")
+    # print(fibo_repetition_prof(num))
+
+for i in range(0, n):
+    print(i)
+    print(fibonachi_memoization(i, memo))
+print("===========================")
+for i in range(0, n):
+    print(i)
+    print(fibonachi_recursion(i))
+
+print("===========================")
+for i in range(0, n):
+    print(i)
+    print(fibo_repetition_prof(i))
