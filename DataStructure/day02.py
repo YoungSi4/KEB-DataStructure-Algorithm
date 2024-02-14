@@ -243,72 +243,192 @@
 #
 # ## 함수 선언 부분 ##
 # def is_Stack_Full():
-# 	global size, stack, top
-# 	if top >= size-1:
-# 		return True
-# 	else :
-# 		return False
+#     global size, stack, top
+#     if top >= size-1:
+#         return True
+#     else :
+#         return False
 #
 # def is_Stack_Empty():
-# 	global size, stack, top
-# 	return size[top]
+#     global size, stack, top
+#     return size[top]
 #
 # def push(data) :
-# 	global size, stack, top
-# 	if is_Stack_Full():
-# 		print("스택이 꽉 찼습니다.")
-# 		return
-# 	top += 1
-# 	stack[top] = data
+#     global size, stack, top
+#     if is_Stack_Full():
+#         print("스택이 꽉 찼습니다.")
+#         return
+#     top += 1
+#     stack[top] = data
 #
 # def pop() :
-# 	global size, stack, top
-# 	if is_Stack_Empty():
-# 		print("스택이 비었습니다.")
-# 		return None
-# 	data = stack[top]
-# 	stack[top] = None
-# 	top -= 1
-# 	return data
+#     global size, stack, top
+#     if is_Stack_Empty():
+#         print("스택이 비었습니다.")
+#         return None
+#     data = stack[top]
+#     stack[top] = None
+#     top -= 1
+#     return data
 #
 # def peek() :
-# 	global size, stack, top
-# 	if is_Stack_Empty():
-# 		print("스택이 비었습니다.")
-# 		return None
-# 	return stack[top]
+#     global size, stack, top
+#     if is_Stack_Empty():
+#         print("스택이 비었습니다.")
+#         return None
+#     return stack[top]
 #
 # def check_Bracket(expr: str) -> bool:
-# 	"""
-# 	check bracket pair in expression
-# 	:param expr: str
-# 	:return: bool
-# 	"""
-# 	table = {')': '(', '}': '{', ']': '[', '>': '<'} # dict 자료형으로 키 밸류로 매칭
+#     """
+#     check bracket pair in expression
+#     :param expr: str
+#     :return: bool
+#     """
 #
-# 	for charictor in expr:
-# 		if charictor not in table: # 근데 조건문이 이러면 괄호만 넣어야 함
-# 			# push(charictor)        # 문자가 섞여 들어가는 이슈가 있음. 잘 해결해보셈
-# 			stack.append(charictor) # 사실 이걸로 이미 push를 할 수 있다.
-# 		elif not stack or table[charictor] != pop():
-# 			return False
-# 		else:
-# 			pass
-# 	return len(stack) == 0 # 스택의 길이가 0이면 True
+#     stack = list()
+#     table = {')': '(', '}': '{', ']': '[', '>': '<'} # dict 자료형으로 키 밸류로 매칭
+#
+#     for charictor in expr:
+#         if charictor in table.values(): # ( { [ < 만 스택에 넣는다
+#             # push(charictor)
+#             stack.append(charictor)
+#         elif charictor in table.keys():
+#             if not stack or table[charictor] != stack.pop():
+#                 return False
+#     return len(stack) == 0 # 스택의 길이가 0이면 True
 #
 # ## 전역 변수 선언 부분 ##
-# size = 20
-# stack = [None for _ in range(size)]
-# top = -1
+#
 #
 # ## 메인 코드 부분 ##
 # if __name__ == "__main__" :
-# 	expression = input("input expression")
+#     expression = input("input expression")
+#     print(check_Bracket(expression))
+
+# 이진 트리 구현해보기 - 8-2 코드 가져와서 실습
+
+# class TreeNode() :
+#     def __init__ (self) :
+#         self.left = None
+#         self.data = None
+#         self.right = None
 #
-# 	for expr in expression :
-# 		top = -1
-# 		print(expr, '==>', check_Bracket(expr))
+# node1 = TreeNode()
+# node1.data = '화사'
+#
+# node2 = TreeNode()
+# node2.data = '솔라'
+# node1.left = node2
+#
+# node3 = TreeNode()
+# node3.data = '문별'
+# node1.right = node3
+#
+# node4 = TreeNode()
+# node4.data = '휘인'
+# node2.left = node4
+#
+# node5 = TreeNode()
+# node5.data = '쯔위'
+# node2.right = node5
+#
+# node6 = TreeNode()
+# node6.data = '선미'
+# node3.left = node6
+#
+# node8 = TreeNode()
+# node8.data = '다현'
+# node4.right = node8
+#
+# node12 = TreeNode()
+# node12.data = '사나'
+# node6.right = node12
+#
+# def preorder(node) :
+#     if node == None:
+#         return
+#     print(node.data, end='->')
+#     preorder(node.left)
+#     preorder(node.right)
+#
+# def inorder(node):
+#     if node == None :
+#         return
+#     inorder(node.left)
+#     print(node.data, end='->')
+#     inorder(node.right)
+#
+# def postorder(node):
+#     if node == None :
+#         return
+#     postorder(node.left)
+#     postorder(node.right)
+#     print(node.data, end='->')
+#
+# print('전위 순회 : ', end = '')
+# preorder(node1)
+# print('끝')
+#
+# print('중위 순회 : ', end = '')
+# inorder(node1)
+# print('끝')
+#
+# print('후위 순회 : ', end = '')
+# postorder(node1)
+# print('끝')
 
 
 
-# 
+# 이진 탐색 트리 구현 - 8-4 번 코드 활용
+
+## 함수 선언 부분 ##
+class TreeNode:
+    def __init__ (self) :
+        self.left = None
+        self.data = None
+        self.right = None
+
+## 전역 변수 선언 부분 ##
+root = None
+name_Array = ['블랙핑크', '레드벨벳', '마마무', '에이핑크', '걸스데이', '트와이스']
+
+## 메인 코드 부분 ##
+node = TreeNode()
+node.data = name_Array[0]
+root = node
+
+for name in name_Array[1:] :
+
+    node = TreeNode()
+    node.data = name
+
+    current = root
+    while True :
+        if name < current.data :
+            if current.left is None :
+                current.left = node
+                break
+            current = current.left
+        else :
+            if current.right is None :
+                current.right = node
+                break
+            current = current.right
+
+findName = input("찾고 싶은 아이돌 입력: ")
+
+current = root
+while True :
+    if findName == current.data:
+        print(findName, '을(를) 찾음.')
+        break
+    elif findName < current.data :
+        if current.left is None :
+            print(findName, '이(가) 트리에 없음')
+            break
+        current = current.left
+    else :
+        if current.right is None :
+            print(findName, '이(가) 트리에 없음')
+            break
+        current = current.right
