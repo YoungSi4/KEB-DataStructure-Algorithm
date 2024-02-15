@@ -54,21 +54,29 @@ def fibonachi_memoization(number: int, memo: list) -> int :
     memo[number] = result
     return result
 
-# Create window object
-w = tk.Tk()
-w.geometry("200x150")
+def process_fibonacci():
+    number = en_input_number.get() # get 함수는 입력 받은 걸 문자열로 리턴해줌
+    lbl_display_fibonacci_result.config(text=f"f{number}! = {fibonachi_memoization(number)}") # config 구성.
 
-# Create widget
-lbl_display_fibonacci_result = tk.Label(w, text='Fibonacci by memoization')
-en_input_number = tk.Entry(w)
-btn_click = tk.Button(w, text='Click')
+if __name__ == "__main__":
+    # Create window object
+    w = tk.Tk()
+    w.geometry("200x150")
 
-# Layout
-lbl_display_fibonacci_result.pack()
-en_input_number.pack(fill='x')
-btn_click.pack(fill="x")
+    # Create widget
+    lbl_display_fibonacci_result = tk.Label(w, text='Fibonacci by memoization')
+    en_input_number = tk.Entry(w)
+    btn_click = tk.Button(w, text='Click', command=process_fibonacci) # bind function
 
-w.mainloop()
+    # Layout
+    lbl_display_fibonacci_result.pack()
+    en_input_number.pack(fill='x')
+    btn_click.pack(fill="x")
+
+
+    # maintain window
+    en_input_number.focus() # focus: 입력 콘솔을 바로 생성된 창으로 옮겨주는 함수
+    w.mainloop()
 
 if __name__ == "__main__":
     n = int(input("how much fibo? : "))

@@ -9,14 +9,28 @@
 
 # push와 pop은 append와 pop을 이용하겠음.
 
-def check_Bracket():
-    pass
+def check_Bracket(phrase) -> bool:
+    """
+    스택을 활용해 괄호 짝을 검사하는 함수
+    :param phrase: string
+    :return: bool
+    """
+
+    # 지역변수 선언
+    stack = list()
+    datatable = {'(': ')', '{': '}', '[': ']', '<': '>'}
+
+    for word in phrase:
+        if word in datatable.keys():
+            stack.append(word)
+        elif word in datatable.values():
+            if
 
 
 
 ## 메인 함수
 if __name__ == "__main__":
-    expresion = input("괄호 검사: ")
+    expresion = input("괄호 검사 (){}[]<>: ")
     print(check_Bracket(expresion))
 
 
