@@ -24,7 +24,8 @@ def check_Bracket(phrase) -> bool:
         if word in datatable.keys():
             stack.append(word)
         elif word in datatable.values():
-            if
+            pass
+            # if
 
 
 
