@@ -1,14 +1,14 @@
 # 키 순서대로 출력
 
 ## 클래스와 함수 선언 부분 ##
-# class Node() :
-# 	def __init__ (self) :
+# class Node():
+# 	def __init__ (self):
 # 		self.data = None
 # 		self.link = None
 #
-# def print_Nodes(start) :
+# def print_Nodes(start):
 # 	current = start
-# 	if current == None :
+# 	if current == None:
 # 		return
 # 	print(current.data, end = ' ')
 # 	while current.link != None:
@@ -16,24 +16,24 @@
 # 		print(current.data, end = ' ')
 # 	print()
 #
-# def make_Simple_Linked_List(name_Phone) :
+# def make_Simple_Linked_List(name_Phone):
 # 	global head, current, pre
 # 	print_Nodes(head)
 #
 # 	node = Node()
 # 	node.data = name_Phone
-# 	if head == None :			# 첫 번째 노드일 때
+# 	if head == None:			# 첫 번째 노드일 때
 # 		head = node
 # 		return
 #
-# 	if head.data[1] > name_Phone[1] :	# 첫 번째 노드보다 작을 때
+# 	if head.data[1] > name_Phone[1]:	# 첫 번째 노드보다 작을 때
 # 		node.link = head
 # 		head = node
 # 		return
 #
 # 	# 중간 노드로 삽입하는 경우
 # 	current = head
-# 	while current.link != None :
+# 	while current.link != None:
 # 		pre = current
 # 		current = current.link
 # 		if current.data[1] > name_Phone[1]: # 부등호만 바꾸면 오름차순 내림차순 전환 가능
