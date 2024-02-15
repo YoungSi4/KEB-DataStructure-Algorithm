@@ -279,7 +279,12 @@ def fibo_repetition_prof(number):
 
 # 피보나치 수열 - 메모이제이션 추가: 압도적으로 일반 재귀보다 빠르다.
 
-memo = [None for _ in range(100)] # 계산결과를 빠르게 정적할당
+# memo = [None for _ in range(100)] # 계산결과를 빠르게 정적할당
+# memo[0] , memo[1] = 0, 1
+
+# memo = [0 if i==0 else 1 if i==1 else None for i in range(100)] ## 이렇게 한 줄 할 수 있긴한데 비효율적인듯?
+
+memo = [0, 1] + [None] * (98) # 좀 더 갈끔한 방법.
 
 def fibonachi_memoization(number: int, memo: list) -> int :
     """
@@ -289,11 +294,12 @@ def fibonachi_memoization(number: int, memo: list) -> int :
     """
     if memo[number] is not None: # 이미 계산한 내용이면 바로 리턴하자.
         return memo[number]
-    if number < 2:
-        result = number
-    else:
-        result = fibonachi_memoization(number - 1, memo) + fibonachi_memoization(number - 2, memo)
-        memo[number] = result
+
+    # if number < 2:
+    #     result = number
+    # else:
+    result = fibonachi_memoization(number - 1, memo) + fibonachi_memoization(number - 2, memo)
+    memo[number] = result
     return result
 
 # for i in range(0, n) :
