@@ -284,7 +284,7 @@ def fibo_repetition_prof(number):
 
 # memo = [0 if i==0 else 1 if i==1 else None for i in range(100)] ## 이렇게 한 줄 할 수 있긴한데 비효율적인듯?
 
-memo = [0, 1] + [None] * (98) # 좀 더 갈끔한 방법.
+memo = [0, 1] + [None] * (98) # 좀 더 갈끔한 방법. 인데 제네레이터는 아님.
 
 def fibonachi_memoization(number: int, memo: list) -> int :
     """
