@@ -74,31 +74,31 @@
 ## 큐 응용예제 02
 ## 콜센터의 응답 대기 시간 계산하기
 
-def is_queue_full() :
+def is_queue_full():
     global SIZE, queue, front, rear
-    if ((rear+1)%SIZE == front) :
+    if ((rear+1) % SIZE == front):
         return True
     else :
         return False
 
-def is_queue_empty() :
+def is_queue_empty():
     global SIZE, queue, front, rear
-    if (front == rear) :
+    if (front == rear):
         return True
     else :
         return False
 
-def enQueue(data) :
+def enQueue(data):
     global SIZE, queue, front, rear
-    if (is_queue_full()) :
+    if (is_queue_full()):
         print("큐가 꽉 찼습니다.")
         return
     rear = (rear+1) % SIZE
     queue[rear] = data
 
-def deQueue() :
+def deQueue():
     global SIZE, queue, front, rear
-    if (is_queue_empty()) :
+    if (is_queue_empty()):
         print("큐가 비었습니다.")
         return None
     front = (front+1) % SIZE
@@ -107,19 +107,19 @@ def deQueue() :
 
     return data
 
-def peek() :
+def peek():
     global SIZE, queue, front, rear
     if (is_queue_empty()) :
         print("큐가 비었습니다.")
         return None
     return queue[front+1]
 
-def calc_time() :
+def calc_time():
     global SIZE, queue, front, rear
-    timeSum = 0
-    for i in range((front+1)% SIZE, (rear+1)%SIZE) :
-        timeSum += queue[i][1]
-    return timeSum
+    time_sum = 0
+    for i in range((front+1)% SIZE, (rear+1)%SIZE):
+        time_sum += queue[i][1]
+    return time_sum
 
 
 ## 전역 변수 선언 부분 ##
