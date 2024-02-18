@@ -9,5 +9,5 @@
 7. Graph & BST (in process)
 8. Recursion ()
 9. Sorting (O)
-10. Advanced Sorting ()
+10. Advanced Sorting (O)
 11. Searching ()
